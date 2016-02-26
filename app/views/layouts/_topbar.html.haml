@@ -1,0 +1,26 @@
+%nav.top-bar{"data-topbar" => "", :role => "navigation"}
+  %ul.title-area
+    %li.name
+
+      %h1#Users
+        %a.home{:href => root_path} Music
+
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span user
+  %section.top-bar-section
+    / Right Nav Section
+    %ul.right
+      %li.active
+        - if user_signed_in?
+          %a{ href: "users/#{current_user.id}"}
+          %li= link_to 'Log Out', destroy_user_session_path, method: :delete
+          %ul.left
+
+        - else
+          %li.has-dropdown
+            %a{:href => "#"} Account
+            %ul.dropdown
+              %li= link_to 'Log In', new_user_session_path
+              %li.active= link_to 'Sign Up', new_user_registration_path
