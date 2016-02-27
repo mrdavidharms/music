@@ -19,42 +19,42 @@ feature 'user signs in', %{
   end
 
   scenario 'an existing user specifies a valid email, username, and password' do
-    fill_in 'Username', with: user.username
+    fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log In'
 
     expect(page).to have_content('Signed in successfully.')
-    expect(page).to have_content('Sign Out')
+    expect(page).to have_content('Log Out')
 
   end
 
   scenario 'a nonexistant username and password is supplied' do
-    fill_in 'Username', with: 'Kemalao'
+    fill_in 'Email', with: 'someone@whatev.com'
     fill_in 'Password', with: 'password'
     click_button 'Log In'
 
-    expect(page).to have_content('Invalid username or password.')
+    expect(page).to have_content('Invalid email or password.')
     expect(page).to_not have_content('Signed in successfully.')
-    expect(page).to_not have_content('Sign Out')
+    expect(page).to_not have_content('Log Out')
   end
 
   scenario 'an existing email with the wrong password is denied access' do
-    fill_in 'Username', with: user.username
+    fill_in 'Email', with: user.email
     fill_in 'Password', with: 'incorrect'
     click_button 'Log In'
 
-    expect(page).to have_content('Invalid username or password.')
+    expect(page).to have_content('Invalid email or password.')
     expect(page).to_not have_content('Signed in successfully.')
-    expect(page).to_not have_content('Sign Out')
+    expect(page).to_not have_content('Log Out')
   end
 
   scenario 'an already authenticated user cannot re-sign in' do
-    fill_in 'Username', with: user.username
+    fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log In'
 
-    expect(page).to have_content('Sign Out')
-    expect(page).to_not have_content('Sign In')
+    expect(page).to have_content('Log Out')
+    expect(page).to_not have_content('Log In')
 
     visit new_user_session_path
     expect(page).to have_content('You are already signed in.')

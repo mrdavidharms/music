@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.authentication_keys = [ :login ]
+
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
@@ -99,32 +99,7 @@ Devise.setup do |config|
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 10
 
-  # Setup a pepper to generate the encrypted password.
-  # config.pepper = '6f5ce602d7a7092c7a0e6a3743f8d8e11c0d766af5aa6aee646d9579622e1dbf6bd3c41413678045a5f05ec352cfcca2796d846cd4866ed6133b0f5540b49d12'
 
-  # Send a notification email when the user's password is changed
-  # config.send_password_change_notification = false
-
-  # ==> Configuration for :confirmable
-  # A period that the user is allowed to access the website even without
-  # confirming their account. For instance, if set to 2.days, the user will be
-  # able to access the website for two days without confirming their account,
-  # access will be blocked just in the third day. Default is 0.days, meaning
-  # the user cannot access the website without confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
-
-  # A period that the user is allowed to confirm their account before their
-  # token becomes invalid. For example, if set to 3.days, the user can confirm
-  # their account within 3 days after the mail was sent, but on the fourth day
-  # their account can't be confirmed with the token any more.
-  # Default is nil, meaning there is no restriction on how long a user can take
-  # before confirming their account.
-  # config.confirm_within = 3.days
-
-  # If true, requires any email changes to be confirmed (exactly the same way as
-  # initial account confirmation) to be applied. Requires additional unconfirmed_email
-  # db field (see migrations). Until confirmed, new email is stored in
-  # unconfirmed_email column, and copied to email column on successful confirmation.
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
