@@ -1,0 +1,19 @@
+<html class="no-js" lang="en">
+
+    <body style>
+            <div class="users">
+            <% unless @users.nil? %>
+              <% @users.each do |user| %>
+              <% user.username %>
+              <% end %>
+            <% end %>
+            </div>
+
+
+
+
+        <script>
+          $(document).foundation();
+        </script>
+    </body>
+</html>
